@@ -27,6 +27,7 @@ def load_data(dataset, normalize=True):
         raise NotImplementedError("Unknown dataset {}.".format(dataset))
     if normalize:
         x = x / np.linalg.norm(x, axis=1, keepdims=True)
+    print('X Shape: ', x.shape)
     x0 = x[None, :, :]
     x1 = x[:, None, :]
     cos = (x0 * x1).sum(-1)
@@ -34,6 +35,7 @@ def load_data(dataset, normalize=True):
     similarities = np.triu(similarities) + np.triu(similarities).T
     similarities[np.diag_indices_from(similarities)] = 1.0
     similarities[similarities > 1.0] = 1.0
+    print('Similarities Shape: ', similarities.shape)
     return x, y, similarities
 
 
