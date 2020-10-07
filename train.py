@@ -142,5 +142,6 @@ if __name__ == "__main__":
     parser = add_flags_from_config(parser, config_args)
     args = parser.parse_args()
     tree = train(args)
+    print(tree)
     nx.draw(tree, with_labels=True, font_weight='bold')
     plt.show()
