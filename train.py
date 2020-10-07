@@ -4,7 +4,8 @@ import argparse
 import json
 import logging
 import os
-
+import networkx as nx
+import matplotlib.pyplot as plt
 import numpy as np
 import torch
 import torch.utils.data as data
@@ -128,6 +129,8 @@ def train(args):
     model.eval()
     logging.info("Decoding embeddings.")
     tree = model.decode_tree(fast_decoding=args.fast_decoding)
+    nx.draw(tree, with_labels=True, font_weight='bold')
+    plt.show()
     cost = dasgupta_cost(tree, similarities)
     logging.info("{}:\t{:.4f}".format("Dasgupta's cost", cost))
 
