@@ -53,7 +53,7 @@ def load_uci_data(dataset):
         "iris": (0, 4, -1),
         "glass": (1, 10, -1),
     }
-    data_path = os.path.join(os.environ["DATAPATH"], dataset, "{}.data".format(dataset))
+    data_path = os.path.join('/content/HypHC/data/', dataset, "{}.data".format(dataset))
     classes = {}
     class_counter = 0
     start_idx, end_idx, label_idx = ids[dataset]
