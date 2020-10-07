@@ -9,7 +9,7 @@ config_args = {
     "eval_every": 10,
     "patience": 20,
     "optimizer": "RAdam",
-    "save": 1,
+    "save": 0,
     "fast_decoding": 1,
     "num_samples": -1,
 
