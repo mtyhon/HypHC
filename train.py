@@ -129,19 +129,18 @@ def train(args):
     model.eval()
     logging.info("Decoding embeddings.")
     tree = model.decode_tree(fast_decoding=args.fast_decoding)
-    nx.draw(tree, with_labels=True, font_weight='bold')
-    plt.show()
     cost = dasgupta_cost(tree, similarities)
     logging.info("{}:\t{:.4f}".format("Dasgupta's cost", cost))
 
     if args.save:
         logger.removeHandler(hdlr)
-    return
+    return tree
 
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser("Hyperbolic Hierarchical Clustering.")
     parser = add_flags_from_config(parser, config_args)
     args = parser.parse_args()
-    train(args)
-
+    tree = train(args)
+    nx.draw(tree, with_labels=True, font_weight='bold')
+    plt.show()
