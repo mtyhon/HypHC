@@ -34,7 +34,9 @@ def load_data(dataset, normalize=True):
     print('X1 Shape: ', x1.shape)
     cos = (x0 * x1).sum(-1)
     print('Cos Shape: ', cos.shape)
+    print('Max Cos: ', np.max(cos))
     similarities = 0.5 * (1 + cos)
+    print('Max Sim: ', np.max(similarities))
     similarities = np.triu(similarities) + np.triu(similarities).T
     print('Early Similarities Shape: ', similarities.shape)
     similarities[np.diag_indices_from(similarities)] = 1.0
