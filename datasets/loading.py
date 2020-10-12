@@ -29,10 +29,14 @@ def load_data(dataset, normalize=True):
         x = x / np.linalg.norm(x, axis=1, keepdims=True)
     print('X Shape: ', x.shape)
     x0 = x[None, :, :]
+    print('X0 Shape: ', x0.shape)
     x1 = x[:, None, :]
+    print('X1 Shape: ', x1.shape)
     cos = (x0 * x1).sum(-1)
+    print('Cos Shape: ', cos.shape)
     similarities = 0.5 * (1 + cos)
     similarities = np.triu(similarities) + np.triu(similarities).T
+    print('Early Similarities Shape: ', similarities.shape)
     similarities[np.diag_indices_from(similarities)] = 1.0
     similarities[similarities > 1.0] = 1.0
     print('Similarities Shape: ', similarities.shape)
